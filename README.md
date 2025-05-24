@@ -33,3 +33,4 @@ In your solution, include a readme detailing your thought process and any design
 - Include best practices for PR workflows, CI & CD triggers, and approval gates in your solution
 
 If you have any questions, please do not hesitate to ask!
+Test: CI/CD trigger validation via PR
