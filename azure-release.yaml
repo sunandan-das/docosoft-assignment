@@ -2,7 +2,7 @@ trigger: none
 resources:
   pipelines:
     - pipeline: buildPipeline    
-      source: docosoft-ci-pipeline  
+      source: docosoft-ci-pipeline  # CI pipeline
       trigger: true               
 
 pool:
