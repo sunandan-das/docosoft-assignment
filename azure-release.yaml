@@ -1,0 +1,29 @@
+trigger: none  
+resources:
+  pipelines:
+    - pipeline: buildPipeline    
+      source: docosoft-ci-pipeline  
+      trigger: true               
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  webAppName: 'decosoft-counter-app'
+  packagePath: '$(Pipeline.Workspace)/buildPipeline/drop/**/*.zip'
+
+steps:
+- task: DownloadPipelineArtifact@2
+  inputs:
+    buildType: 'specific'
+    project: '$(System.TeamProject)'
+    pipeline: 'docosoft-ci-pipeline'
+    artifact: 'drop'
+    path: '$(Pipeline.Workspace)/buildPipeline/drop'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'sunandan'
+    appType: 'webApp'
+    appName: '$(webAppName)'
+    package: '$(packagePath)'
